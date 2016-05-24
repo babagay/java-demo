@@ -24,6 +24,11 @@ import java.util.regex.Pattern;
  * Twitter-clone on top of Redis.
  *
  * @author Costin Leau
+ *
+ * "user:root:uid" = 1
+ * "auth:b490eb75-daca-4a38-9982-91f0fb2adb35" = 1
+ *
+ * lrange uid:1:posts 0 15
  */
 @Named
 public class RetwisRepository {
