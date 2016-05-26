@@ -2,13 +2,22 @@ package ru.babagay.web.redis;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.ListOperations;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
-import javax.annotation.Resource;
 import java.net.URL;
 
+
+public class Example {
+
+    @Autowired
+    private StringRedisTemplate redisTemplate;
+
+    public void addLink(String userId, URL url) {
+        redisTemplate.opsForList().leftPush(userId, url.toExternalForm());
+    }
+}
+
+/*
 public class Example {
 
 
@@ -33,3 +42,4 @@ public class Example {
         redisTemplate.opsForList().leftPush(userId, url.toExternalForm());
     }
 }
+*/
