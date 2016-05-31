@@ -51,6 +51,8 @@
         <gson.version>2.6.2</gson.version>
         <simple-json.version>1.1.1</simple-json.version>
         <tomcat.version>9.0.0.M1</tomcat.version>
+        <!--<start-class>ru.babagay.Application</start-class>-->
+        <spring-boot-version>1.3.5.RELEAS</spring-boot-version>
     </properties>
 
 
@@ -65,6 +67,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -145,10 +148,10 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -320,6 +323,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-version}</version>
+                <configuration>
+                    <mainClass>ru.babagay.Application</mainClass>
+                    <!--<layout>ZIP</layout>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
