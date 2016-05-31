@@ -31,7 +31,12 @@ public class GreetingController {
     }
 
 
-
+    /**
+     * Test of redis list
+     * @param name
+     * @param model
+     * @return
+     */
     @RequestMapping(path = "/greeting", method = RequestMethod.GET)
     public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
 
@@ -45,7 +50,7 @@ public class GreetingController {
          */
         String UID = redisTemplate.opsForList().range("uid:123", 0, 10).get(0);
 
-        model.addAttribute("name", name);
+        model.addAttribute("name", UID + " item");
 
         return "greeting";
     }

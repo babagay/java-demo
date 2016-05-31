@@ -48,7 +48,7 @@
 
     <bean id="messageListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
         <constructor-arg>
-            <bean class="redisexample.DefaultMessageDelegate"/>
+            <bean class="ru.babagay.web.redis.DefaultMessageDelegate"/>
         </constructor-arg>
     </bean>
 
