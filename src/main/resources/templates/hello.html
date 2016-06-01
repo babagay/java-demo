@@ -3,8 +3,55 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 </head>
 <body>
 HELLO
+
+<input type="text" id="data"/>
+<a id="post" href="#">POST</a>
+<a id="get" href="#">GET</a>
+
+
+
+<script>
+    $('#get').click(function () {
+        $.ajax({
+            type: "GET",
+            cache: false,
+            url: '/getRandomData',
+            data: "",
+            success: function (response) {
+                var html = "";
+                $.each(response.data, function (i) {
+                    html = html + response.data[i] + "<br/>";
+                });
+                $('#container').html(html);
+            }
+        });
+    });
+
+    $('#post').click(function () {
+        if (!$("#data").val()) {
+            alert("Enter your data!");
+        } else {
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: '/persist',
+                data: {
+                    'data': $("#data").val()
+                },
+                success: function (response) {
+                    $('#get').click();
+                }
+            });
+        }
+
+    });
+
+</script>
+
 </body>
 </html>
